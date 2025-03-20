@@ -28,7 +28,7 @@ src="https://www.facebook.com/tr?id=1492028772184456&ev=PageView&noscript=1"
 
     <script>
         function comprar() {
-            fbq('track', 'Purchase');
+            fbq('track', 'Purchase',{currency: "USD", value: 10.00});
             console.log("¡Has hecho clic en el botón de comprar!");
             alert("¡Gracias por tu compra!");
         }

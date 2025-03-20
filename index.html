@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test TEL</title>
-    <!-- Meta Pixel Code -->
+  <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -24,13 +24,18 @@ src="https://www.facebook.com/tr?id=1492028772184456&ev=PageView&noscript=1"
 </head>
 <body>
     <h1>Test TEL Meta Pixel</h1>
+    <button onclick="add()">Add to Cart</button>
     <button onclick="comprar()">Buy</button>
-
-    <script>
+        <script>
         function comprar() {
             fbq('track', 'Purchase',{currency: "USD", value: 10.00});
             console.log("¡Has hecho clic en el botón de comprar!");
             alert("¡Gracias por tu compra!");
+        };
+        function add() {
+            fbq('track', 'AddToCart');
+            console.log("¡Has hecho clic en el botón de agregar al carrito!");
+            alert("¡Gracias por agregar al carrito!");
         }
     </script>
 </body>

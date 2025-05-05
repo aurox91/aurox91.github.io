@@ -110,10 +110,11 @@
         <img src="apples.jpeg" alt="Manzanas" class="product-img">
         <p class="description">Disfruta de nuestras manzanas frescas, perfectas para cualquier ocasión. ¡Un sabor delicioso y natural!</p>
         <p class="price">$10.00 USD</p>
-        
+
         <div class="buttons">
             <button class="button add" onclick="add()">Agregar al carrito</button>
             <button class="button buy" onclick="comprar()">Comprar ahora</button>
+            <button class="button buy" onclick="iniciarCheckout()">Iniciar checkout</button>
         </div>
     </div>
 
@@ -127,6 +128,11 @@
             fbq('track', 'AddToCart');
             console.log("¡Has hecho clic en el botón de agregar al carrito!");
             alert("¡Gracias por agregar al carrito!");
+        }
+        function iniciarCheckout() {
+            fbq('track', 'InitiateCheckout');
+            console.log("¡Has hecho clic en el botón de iniciar checkout!");
+            alert("¡Gracias por iniciar el checkout!");
         }
     </script>
 

@@ -62,6 +62,7 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 16px;
         }
 
         .brand {
@@ -71,9 +72,35 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
             display: flex;
             align-items: center;
             gap: 8px;
+            white-space: nowrap;
         }
 
         .brand .dot { color: var(--primary); }
+
+        .search {
+            flex: 1;
+            max-width: 420px;
+            display: flex;
+            gap: 8px;
+        }
+        .search input {
+            flex: 1;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 10px 16px;
+            font-size: 14px;
+            outline: none;
+        }
+        .search input:focus { border-color: var(--primary); }
+        .search button {
+            border: none;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 999px;
+            padding: 0 16px;
+            cursor: pointer;
+            font-size: 15px;
+        }
 
         .cart-btn {
             position: relative;
@@ -87,6 +114,7 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
             display: flex;
             align-items: center;
             gap: 8px;
+            white-space: nowrap;
             transition: all 0.2s;
         }
 
@@ -134,7 +162,7 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
         .grid {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 32px 24px 80px;
+            padding: 32px 24px 40px;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 24px;
@@ -157,12 +185,14 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
         }
 
         .thumb {
+            position: relative;
             height: 170px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 72px;
             background: linear-gradient(135deg, #eef2ff, #e0f2fe);
+            cursor: pointer;
         }
 
         .thumb img {
@@ -170,6 +200,23 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
             height: 100%;
             object-fit: cover;
         }
+
+        .wish {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 36px;
+            height: 36px;
+            border-radius: 999px;
+            border: none;
+            background: rgba(255,255,255,0.9);
+            font-size: 18px;
+            cursor: pointer;
+            line-height: 1;
+            transition: transform 0.15s;
+        }
+        .wish:hover { transform: scale(1.15); }
+        .wish.active { color: #e11d48; }
 
         .card-body {
             padding: 18px;
@@ -182,7 +229,9 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
             margin: 0 0 4px;
             font-size: 17px;
             font-weight: 700;
+            cursor: pointer;
         }
+        .card h3:hover { color: var(--primary); }
 
         .card .desc {
             font-size: 13px;
@@ -226,10 +275,17 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
         }
         .btn.buy:hover { background: var(--accent-dark); }
 
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            color: var(--muted);
+            padding: 40px 0;
+        }
+
         /* Buy all banner */
         .buyall {
             max-width: 1100px;
-            margin: 0 auto 64px;
+            margin: 0 auto 48px;
             padding: 0 24px;
         }
         .buyall-inner {
@@ -257,6 +313,51 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
             transition: transform 0.2s;
         }
         .btn-buyall:hover { transform: scale(1.04); }
+
+        /* Footer / extra events */
+        footer {
+            background: #fff;
+            border-top: 1px solid var(--border);
+            padding: 48px 24px;
+        }
+        .foot-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+        .foot-grid h3 { margin: 0 0 8px; font-size: 16px; }
+        .foot-grid p { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+        .newsletter { display: flex; gap: 8px; }
+        .newsletter input {
+            flex: 1;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 14px;
+            outline: none;
+        }
+        .newsletter button {
+            border: none;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 10px;
+            padding: 10px 18px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .ghost-btn {
+            border: 1px solid var(--border);
+            background: #fff;
+            border-radius: 10px;
+            padding: 10px 18px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .ghost-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .foot-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 
         /* Cart drawer */
         .overlay {
@@ -358,9 +459,22 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
             font-size: 16px;
             font-weight: 700;
             cursor: pointer;
+            margin-bottom: 8px;
         }
         .btn-checkout:hover { background: var(--accent-dark); }
         .btn-checkout:disabled { background: #cbd5e1; cursor: not-allowed; }
+        .btn-pay {
+            width: 100%;
+            padding: 12px;
+            background: #fff;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .btn-pay:disabled { color: #cbd5e1; border-color: var(--border); cursor: not-allowed; }
 
         /* Toast */
         .toast {
@@ -386,6 +500,10 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
     <header>
         <div class="nav">
             <div class="brand">🛒 Fresh<span class="dot">Market</span></div>
+            <form class="search" onsubmit="doSearch(event)">
+                <input type="text" id="searchInput" placeholder="Buscar productos…">
+                <button type="submit">🔍</button>
+            </form>
             <button class="cart-btn" onclick="openCart()">
                 Carrito <span class="cart-count" id="cartCount">0</span>
             </button>
@@ -409,6 +527,29 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
         </div>
     </section>
 
+    <footer>
+        <div class="foot-grid">
+            <div>
+                <h3>📬 Suscríbete</h3>
+                <p>Recibe ofertas semanales. (Dispara <code>Lead</code> / <code>CompleteRegistration</code>)</p>
+                <form class="newsletter" onsubmit="subscribe(event)">
+                    <input type="email" id="emailInput" placeholder="tu@email.com" required>
+                    <button type="submit">Suscribirme</button>
+                </form>
+            </div>
+            <div>
+                <h3>🤝 Más acciones de prueba</h3>
+                <p>Eventos estándar adicionales para validar el pixel.</p>
+                <div class="foot-actions">
+                    <button class="ghost-btn" onclick="contact()">Contacto</button>
+                    <button class="ghost-btn" onclick="findLocation()">Encontrar tienda</button>
+                    <button class="ghost-btn" onclick="schedule()">Agendar entrega</button>
+                    <button class="ghost-btn" onclick="customize()">Personalizar pedido</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <!-- Cart drawer -->
     <div class="overlay" id="overlay" onclick="closeCart()"></div>
     <aside class="drawer" id="drawer">
@@ -423,6 +564,7 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
                 <span id="cartTotal">$0.00</span>
             </div>
             <button class="btn-checkout" id="checkoutBtn" onclick="checkout()">Iniciar checkout</button>
+            <button class="btn-pay" id="payBtn" onclick="addPaymentInfo()">Agregar info de pago</button>
         </div>
     </aside>
 
@@ -446,18 +588,36 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
             { id: "eggs",       name: "Huevos",          price: 6.00,  emoji: "🥚", desc: "Huevos de gallina libre, docena." }
         ];
 
-        const cart = {}; // id -> qty
+        const cart = {};      // id -> qty
+        const wishlist = {};  // id -> true
+
+        // ---- Helpers ----
+        function money(n) { return "$" + n.toFixed(2) + " " + CURRENCY; }
+        function product(id) { return PRODUCTS.find(p => p.id === id); }
+        function round2(n) { return Number(n.toFixed(2)); }
+        // contents: [{ id, quantity }] — formato recomendado por Meta
+        function contentsFor(map) {
+            return Object.entries(map).map(([id, qty]) => ({ id, quantity: qty }));
+        }
 
         // ---- Render catálogo ----
-        function money(n) { return "$" + n.toFixed(2) + " " + CURRENCY; }
-
-        function renderGrid() {
+        function renderGrid(list) {
+            const items = list || PRODUCTS;
             const grid = document.getElementById("grid");
-            grid.innerHTML = PRODUCTS.map(p => `
+            if (items.length === 0) {
+                grid.innerHTML = `<div class="no-results">No encontramos productos para tu búsqueda 🤷</div>`;
+                return;
+            }
+            grid.innerHTML = items.map(p => `
                 <article class="card">
-                    <div class="thumb">${p.img ? `<img src="${p.img}" alt="${p.name}">` : p.emoji}</div>
+                    <div class="thumb" onclick="viewContent('${p.id}')">
+                        ${p.img ? `<img src="${p.img}" alt="${p.name}">` : p.emoji}
+                        <button class="wish ${wishlist[p.id] ? 'active' : ''}" id="wish-${p.id}"
+                                onclick="event.stopPropagation(); toggleWishlist('${p.id}')"
+                                title="Agregar a favoritos">${wishlist[p.id] ? '♥' : '♡'}</button>
+                    </div>
                     <div class="card-body">
-                        <h3>${p.name}</h3>
+                        <h3 onclick="viewContent('${p.id}')">${p.name}</h3>
                         <p class="desc">${p.desc}</p>
                         <div class="price">${money(p.price)}</div>
                         <div class="actions">
@@ -469,7 +629,57 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
             `).join("");
         }
 
-        function product(id) { return PRODUCTS.find(p => p.id === id); }
+        // ---- ViewContent ----
+        function viewContent(id) {
+            const p = product(id);
+            fbq('track', 'ViewContent', {
+                content_ids: [id],
+                content_type: 'product',
+                content_name: p.name,
+                currency: CURRENCY,
+                value: p.price
+            });
+            toast(`Viendo ${p.name} · ${money(p.price)}`);
+        }
+
+        // ---- Search ----
+        function doSearch(e) {
+            e.preventDefault();
+            const q = document.getElementById("searchInput").value.trim();
+            fbq('track', 'Search', {
+                search_string: q,
+                content_category: 'supermercado'
+            });
+            const filtered = PRODUCTS.filter(p =>
+                p.name.toLowerCase().includes(q.toLowerCase()) ||
+                p.desc.toLowerCase().includes(q.toLowerCase())
+            );
+            renderGrid(q ? filtered : PRODUCTS);
+            toast(q ? `Buscando: "${q}"` : "Mostrando todo el catálogo");
+        }
+
+        // ---- Wishlist ----
+        function toggleWishlist(id) {
+            const p = product(id);
+            if (wishlist[id]) {
+                delete wishlist[id];
+            } else {
+                wishlist[id] = true;
+                fbq('track', 'AddToWishlist', {
+                    content_ids: [id],
+                    content_type: 'product',
+                    content_name: p.name,
+                    currency: CURRENCY,
+                    value: p.price
+                });
+                toast(`${p.name} agregado a favoritos ♥`);
+            }
+            const btn = document.getElementById("wish-" + id);
+            if (btn) {
+                btn.classList.toggle("active", !!wishlist[id]);
+                btn.textContent = wishlist[id] ? "♥" : "♡";
+            }
+        }
 
         // ---- Carrito ----
         function addToCart(id) {
@@ -477,7 +687,8 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
             const p = product(id);
             fbq('track', 'AddToCart', {
                 content_ids: [id],
-                content_name: p.name,
+                content_type: 'product',
+                contents: [{ id: id, quantity: cart[id] }],
                 currency: CURRENCY,
                 value: p.price
             });
@@ -495,7 +706,6 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
         function cartTotal() {
             return Object.entries(cart).reduce((sum, [id, qty]) => sum + product(id).price * qty, 0);
         }
-
         function cartCount() {
             return Object.values(cart).reduce((a, b) => a + b, 0);
         }
@@ -503,7 +713,9 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
         function updateCart() {
             document.getElementById("cartCount").textContent = cartCount();
             document.getElementById("cartTotal").textContent = money(cartTotal());
-            document.getElementById("checkoutBtn").disabled = cartCount() === 0;
+            const empty = cartCount() === 0;
+            document.getElementById("checkoutBtn").disabled = empty;
+            document.getElementById("payBtn").disabled = empty;
 
             const wrap = document.getElementById("drawerItems");
             const ids = Object.keys(cart);
@@ -530,14 +742,16 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
             }).join("");
         }
 
-        // ---- Compras (eventos pixel) ----
+        // ---- Compras (Purchase: obligatorios currency + value) ----
         function buyNow(id) {
             const p = product(id);
             fbq('track', 'Purchase', {
-                content_ids: [id],
-                content_name: p.name,
                 currency: CURRENCY,
-                value: p.price
+                value: p.price,
+                content_ids: [id],
+                content_type: 'product',
+                contents: [{ id: id, quantity: 1 }],
+                num_items: 1
             });
             toast(`¡Gracias por comprar ${p.name}!`);
         }
@@ -546,25 +760,67 @@ src="https://www.facebook.com/tr?id=1701115011233096&ev=PageView&noscript=1"
             const ids = Object.keys(cart);
             if (ids.length === 0) return;
             fbq('track', 'InitiateCheckout', {
-                content_ids: ids,
                 currency: CURRENCY,
-                value: Number(cartTotal().toFixed(2)),
+                value: round2(cartTotal()),
+                content_ids: ids,
+                content_type: 'product',
+                contents: contentsFor(cart),
                 num_items: cartCount()
             });
             toast("Iniciando checkout…");
         }
 
+        function addPaymentInfo() {
+            const ids = Object.keys(cart);
+            if (ids.length === 0) return;
+            fbq('track', 'AddPaymentInfo', {
+                currency: CURRENCY,
+                value: round2(cartTotal()),
+                content_ids: ids,
+                content_type: 'product',
+                contents: contentsFor(cart)
+            });
+            toast("Info de pago agregada 💳");
+        }
+
         function buyAll() {
             // Evento custom solicitado
             fbq('trackCustom', 'BuyAll', { action: 'click-buy-all' });
-            // Además registramos la compra total
+            // Además registramos la compra total (Purchase: currency + value obligatorios)
             fbq('track', 'Purchase', {
-                content_ids: PRODUCTS.map(p => p.id),
                 currency: CURRENCY,
-                value: Number(PRODUCTS.reduce((s, p) => s + p.price, 0).toFixed(2)),
+                value: round2(PRODUCTS.reduce((s, p) => s + p.price, 0)),
+                content_ids: PRODUCTS.map(p => p.id),
+                content_type: 'product',
+                contents: PRODUCTS.map(p => ({ id: p.id, quantity: 1 })),
                 num_items: PRODUCTS.length
             });
             toast("Evento BuyAll enviado al pixel ✅");
+        }
+
+        // ---- Eventos adicionales (footer) ----
+        function subscribe(e) {
+            e.preventDefault();
+            fbq('track', 'Lead', { content_name: 'Newsletter', currency: CURRENCY, value: 0.00 });
+            fbq('track', 'CompleteRegistration', { content_name: 'Newsletter', status: true });
+            document.getElementById("emailInput").value = "";
+            toast("¡Suscripción registrada! 📬");
+        }
+        function contact() {
+            fbq('track', 'Contact');
+            toast("Evento Contact enviado");
+        }
+        function findLocation() {
+            fbq('track', 'FindLocation');
+            toast("Evento FindLocation enviado");
+        }
+        function schedule() {
+            fbq('track', 'Schedule');
+            toast("Evento Schedule enviado");
+        }
+        function customize() {
+            fbq('track', 'CustomizeProduct');
+            toast("Evento CustomizeProduct enviado");
         }
 
         // ---- Drawer ----
